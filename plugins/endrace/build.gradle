@@ -1,0 +1,11 @@
+// EndRace - Race to the End tracking plugin
+version = '1.0'
+description = "Track player race to the End with playtime tracking"
+
+dependencies {
+    // No additional dependencies
+}
+
+shadowJar {
+    archiveBaseName.set('EndRace')
+}

@@ -1,1 +1,19 @@
-rootProject.name = 'EstrocordPlugin'
+rootProject.name = 'ClovePlugins'
+
+// Include all plugin subprojects
+include 'plugins:clovelib'
+include 'plugins:cpc'
+include 'plugins:endrace'
+include 'plugins:estrocord'
+include 'plugins:jailedwings'
+include 'plugins:statsend'
+include 'plugins:wingsync'
+
+// Set project names to match the directory names
+project(':plugins:clovelib').name = 'clovelib'
+project(':plugins:cpc').name = 'cpc'
+project(':plugins:endrace').name = 'endrace'
+project(':plugins:estrocord').name = 'estrocord'
+project(':plugins:jailedwings').name = 'jailedwings'
+project(':plugins:statsend').name = 'statsend'
+project(':plugins:wingsync').name = 'wingsync'

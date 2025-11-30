@@ -5,7 +5,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  */
 
-package com.example.jailplugin;
+package uk.co.clovetwilight3.jailedwings;
 
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.command.Command;
@@ -21,7 +21,7 @@ import java.util.UUID;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import com.org.clovelib.CloveLib;
+import uk.co.clovetwilight3.clovelib.LibMain;
 
 public class JailPlugin extends JavaPlugin implements Listener {
     private Location jailLocation;
@@ -33,7 +33,7 @@ public class JailPlugin extends JavaPlugin implements Listener {
         new BukkitRunnable() {
             @Override
             public void run() {
-                CloveLib cloveLib = CloveLib.getInstance();
+                LibMain cloveLib = LibMain.getInstance();
                 if (cloveLib == null) {
                     getLogger().severe("CloveLib is still not initialized! Disabling JailPlugin.");
                     getServer().getPluginManager().disablePlugin(JailPlugin.this);
@@ -99,7 +99,7 @@ public class JailPlugin extends JavaPlugin implements Listener {
                             player.teleport(unjailLocation);
                             player.sendMessage(ChatColor.GREEN + "You have been released from jail!");
                         }
-                        CloveLib cloveLib = CloveLib.getInstance();
+                        LibMain cloveLib = LibMain.getInstance();
                         if (cloveLib != null) {
                             cloveLib.clearPlayerJailData(playerId);
                         } else {
@@ -264,7 +264,7 @@ public class JailPlugin extends JavaPlugin implements Listener {
         target.sendMessage(ChatColor.RED + "You have been jailed!");
         sender.sendMessage(ChatColor.GREEN + "Player " + target.getName() + " has been jailed!");
 
-        CloveLib cloveLib = CloveLib.getInstance();
+        LibMain cloveLib = LibMain.getInstance();
         if (cloveLib != null) {
             cloveLib.setPlayerJailData(target.getUniqueId(), new CloveLib.JailData(true, System.currentTimeMillis() + jailTime, jailLocation, unjailLocation));
         } else {

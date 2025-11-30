@@ -1,8 +1,12 @@
+# Copyright (c) 2025 Clove Twilight
+# Licensed under the MIT License
+
 name: ClovesPluralCraft
 main: uk.co.clovetwilight3.cpc.CpcMain
 version: 1.0.1
 api-version: 1.21.10
 author: CloveTwilight3
+website: https://github.com/CloveLib/CloveLibPlugins
 # depend: [SkinsRestorer]
 description: "This plugin is for people that are plural, to help proxy their messages"
 commands:

@@ -1,0 +1,19 @@
+// JailedWings - Jail system plugin
+version = '1.7'
+description = "A jail plugin for Minecraft servers"
+
+dependencies {
+    // Depends on CloveLib
+    compileOnly project(':clovelib')
+
+    // JSON parsing for update checker
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+}
+
+shadowJar {
+    archiveBaseName.set('JailPlugin')
+
+    dependencies {
+        include(dependency('com.googlecode.json-simple:json-simple'))
+    }
+}

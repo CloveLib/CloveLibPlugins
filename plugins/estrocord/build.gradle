@@ -1,0 +1,20 @@
+// Estrocord - Main feature plugin
+version = '5.0.0'
+description = "Estrocord Plugin - Feature-rich Minecraft plugin"
+
+dependencies {
+    // Depends on CloveLib
+    compileOnly project(':clovelib')
+
+    // JSON parsing for update checker
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+}
+
+shadowJar {
+    archiveBaseName.set('EstrocordPlugin')
+
+    // Include json-simple in the jar
+    dependencies {
+        include(dependency('com.googlecode.json-simple:json-simple'))
+    }
+}

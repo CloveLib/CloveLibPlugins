@@ -1,0 +1,12 @@
+// Clove's PluralCraft - Plural system support plugin
+version = '1.0.1'
+description = "Plugin for plural systems to proxy their messages"
+
+dependencies {
+    // SkinsRestorer API (optional, commented out in source)
+    // compileOnly 'net.skinsrestorer:skinsrestorer-api:15.0.0'
+}
+
+shadowJar {
+    archiveBaseName.set('ClovesPluralCraft')
+}

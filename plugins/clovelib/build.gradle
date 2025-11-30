@@ -1,0 +1,11 @@
+// CloveLib - Core library plugin
+version = '3.0.0'
+description = "CloveLib - A Library plugin for Clove's Plugins"
+
+dependencies {
+    // CloveLib has no additional dependencies beyond Paper API
+}
+
+shadowJar {
+    archiveBaseName.set('CloveLib')
+}

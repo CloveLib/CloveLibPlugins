@@ -15,7 +15,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import com.example.jailplugin.JailPlugin;
+import uk.co.clovetwilight3.jailwings.JailMain;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

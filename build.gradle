@@ -1,58 +1,63 @@
 plugins {
     id 'java'
-    id 'com.github.johnrengelman.shadow' version '8.1.1'
-    id 'maven-publish'
+    id 'com.github.johnrengelman.shadow' version '8.1.1' apply false
 }
 
-group = 'uk.co.clovetwilight3'
-version = '3.0.0'
-description = 'CloveLib – A Library plugin for Clove\'s Plugins'
+// Common configuration for all subprojects
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'com.github.johnrengelman.shadow'
 
-java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(21))
-}
+    group = 'uk.co.clovetwilight3'
 
-repositories {
-    mavenCentral()
-    maven {
-        name = 'papermc'
-        url = 'https://repo.papermc.io/repository/maven-public/'
-    }
-}
-
-dependencies {
-    compileOnly 'io.papermc.paper:paper-api:1.21.11-pre3-R0.1-SNAPSHOT'
-}
-
-shadowJar {
-    archiveClassifier.set('all')
-    manifest {
-        attributes(
-                'Main-Class': 'uk.co.clovetwilight3.CloveLib'
-        )
-    }
-}
-
-publishing {
-    publications {
-        gpr(MavenPublication) {
-            artifactId = 'clovelib'
-            artifact shadowJar.archiveFile
-        }
+    java {
+        toolchain.languageVersion.set(JavaLanguageVersion.of(21))
     }
 
     repositories {
+        mavenCentral()
         maven {
-            name = 'GitHubPackages'
-            url = uri("https://maven.pkg.github.com/CloveTwilight3/CloveLib")
-            credentials {
-                username = System.getenv("GITHUB_USERNAME")
-                password = System.getenv("GITHUB_TOKEN")
-            }
+            name = 'papermc'
+            url = 'https://repo.papermc.io/repository/maven-public/'
+        }
+        maven {
+            name = 'jitpack'
+            url = 'https://jitpack.io'
+        }
+        maven {
+            name = 'codemc-snapshots'
+            url = 'https://repo.codemc.io/repository/maven-snapshots/'
         }
     }
+
+    dependencies {
+        compileOnly 'io.papermc.paper:paper-api:1.21.4-R0.1-SNAPSHOT'
+    }
+
+    shadowJar {
+        archiveClassifier.set('')
+        // Relocate common dependencies to avoid conflicts
+        relocate 'com.google.gson', 'uk.co.clovetwilight3.libs.gson'
+    }
+
+    tasks.build {
+        dependsOn shadowJar
+    }
+
+    // Copy all built jars to a central output directory
+    tasks.register('copyJar', Copy) {
+        dependsOn shadowJar
+        from shadowJar.archiveFile
+        into "${rootProject.buildDir}/libs"
+    }
+
+    build.finalizedBy copyJar
 }
 
-tasks.build {
-    dependsOn shadowJar
+// Task to build all plugins
+tasks.register('buildAll') {
+    dependsOn subprojects.collect { it.tasks.named('build') }
+    doLast {
+        println "All plugins built! JARs available in: ${buildDir}/libs"
+    }
 }

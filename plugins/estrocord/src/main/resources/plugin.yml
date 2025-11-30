@@ -3,7 +3,7 @@
 
 name: EstrocordPlugin
 version: 5.0.0
-main: uk.co.clovetwilight3.estrocord.EstrocordPlugin
+main: uk.co.clovetwilight3.estrocord.EstroMain
 api-version: '1.21'
 depend: [CloveLib]
 authors:
