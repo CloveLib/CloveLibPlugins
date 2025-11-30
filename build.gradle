@@ -36,8 +36,6 @@ subprojects {
 
     shadowJar {
         archiveClassifier.set('')
-        // Relocate common dependencies to avoid conflicts
-        relocate 'com.google.gson', 'uk.co.clovetwilight3.libs.gson'
     }
 
     tasks.build {
@@ -54,21 +52,10 @@ subprojects {
     build.finalizedBy copyJar
 }
 
-// Configure subprojects that depend on clovelib to use compileOnly dependency
-configure(subprojects.findAll { it.name in ['estrocord', 'jailedwings', 'wingsync'] }) {
-    dependencies {
-        compileOnly project(':clovelib')
-    }
-
-    // Ensure clovelib compiles first
-    tasks.named('compileJava') {
-        dependsOn ':clovelib:compileJava'
-    }
-}
-
-// Task to build all plugins
+// Task to build all plugins in correct order
 tasks.register('buildAll') {
     dependsOn subprojects.collect { it.tasks.named('build') }
+
     doLast {
         println "All plugins built! JARs available in: ${buildDir}/libs"
     }

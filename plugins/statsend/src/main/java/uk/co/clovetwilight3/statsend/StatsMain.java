@@ -4,7 +4,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.ChatColor;
-import uk.co.clovetwilight3.libs.bstats.bukkit.Metrics;
+import org.bstats.bukkit.Metrics;
 
 public class StatsMain extends JavaPlugin {
 

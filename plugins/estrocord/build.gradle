@@ -10,6 +10,11 @@ dependencies {
     implementation 'com.googlecode.json-simple:json-simple:1.1.1'
 }
 
+// Fix: Explicitly declare the dependency on clovelib:shadowJar
+tasks.named('compileJava') {
+    dependsOn ':clovelib:shadowJar'
+}
+
 shadowJar {
     archiveBaseName.set('EstrocordPlugin')
 

@@ -5,6 +5,7 @@
 
 package uk.co.clovetwilight3.estrocord;
 
+import uk.co.clovetwilight3.clovelib.LibMain;
 import uk.co.clovetwilight3.estrocord.commands.*;
 import uk.co.clovetwilight3.estrocord.flight.*;
 import uk.co.clovetwilight3.estrocord.listeners.*;
@@ -37,7 +38,7 @@ public class EstroMain extends JavaPlugin {
                         ChatColor.WHITE + " is starting up...";
         getLogger().info(startupMessage);
 
-        if (EstroMain.getInstance() == null) {
+        if (LibMain.getInstance() == null) {
             getLogger().severe("CloveLib is not initialized! Ensure it is installed and loaded.");
             getServer().getPluginManager().disablePlugin(this);
             return;
@@ -141,7 +142,7 @@ public class EstroMain extends JavaPlugin {
 
     // Add and retrieve jailed status for players
     public boolean isPlayerJailed(Player player) {
-        EstroMain cloveLib = EstroMain.getInstance();
+        LibMain cloveLib = LibMain.getInstance();
         return cloveLib != null && cloveLib.isPlayerJailed(player.getUniqueId());
     }
 
