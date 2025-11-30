@@ -1,0 +1,58 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+    id 'maven-publish'
+}
+
+group = 'uk.co.clovetwilight3'
+version = '3.0.0'
+description = 'CloveLib – A Library plugin for Clove\'s Plugins'
+
+java {
+    toolchain.languageVersion.set(JavaLanguageVersion.of(21))
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'papermc'
+        url = 'https://repo.papermc.io/repository/maven-public/'
+    }
+}
+
+dependencies {
+    compileOnly 'io.papermc.paper:paper-api:1.21.11-pre3-R0.1-SNAPSHOT'
+}
+
+shadowJar {
+    archiveClassifier.set('all')
+    manifest {
+        attributes(
+                'Main-Class': 'uk.co.clovetwilight3.CloveLib'
+        )
+    }
+}
+
+publishing {
+    publications {
+        gpr(MavenPublication) {
+            artifactId = 'clovelib'
+            artifact shadowJar.archiveFile
+        }
+    }
+
+    repositories {
+        maven {
+            name = 'GitHubPackages'
+            url = uri("https://maven.pkg.github.com/CloveTwilight3/CloveLib")
+            credentials {
+                username = System.getenv("GITHUB_USERNAME")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+}
+
+tasks.build {
+    dependsOn shadowJar
+}
