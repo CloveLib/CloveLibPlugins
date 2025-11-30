@@ -1,11 +1,9 @@
 /*
- * Copyright (c) 2025 Mazey-Jessica Emily Twilight
- * Copyright (c) 2025 UnifiedGaming Systems Ltd (Company Number: 16108983)
- * Licensed under the Apache License, Version 2.0
- * http://www.apache.org/licenses/LICENSE-2.0
+ * Copyright (c) 2025 Clove Twilight
+ * Licensed under the MIT License
  */
 
-package com.example.jailplugin;
+package uk.co.clovetwilight3.jailedwings;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -15,7 +13,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import uk.co.clovetwilight3.jailwings.JailMain;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

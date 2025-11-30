@@ -5,7 +5,7 @@
 
 package uk.co.clovetwilight3.estrocord.size;
 
-import uk.co.clovetwilight3.estrocord.EstrocordPlugin;
+import uk.co.clovetwilight3.estrocord.EstroMain;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -18,7 +18,7 @@ import java.util.List;
 
 public class PotionRecipeManager {
 
-    public static void registerRecipes(EstrocordPlugin plugin) {
+    public static void registerRecipes(EstroMain plugin) {
         // --- Growth Potion Recipe ---
         // Create the custom Growth Potion item (sticky piston used to represent "stretch")
         ItemStack growthPotion = new ItemStack(Material.POTION);

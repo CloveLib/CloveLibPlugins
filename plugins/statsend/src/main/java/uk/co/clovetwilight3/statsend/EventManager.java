@@ -7,7 +7,7 @@ import java.util.*;
 
 public class EventManager {
 
-    private final Main plugin;
+    private final StatsMain plugin;
     private final Gson gson;
     private final File dataFile;
 
@@ -25,7 +25,7 @@ public class EventManager {
     private Map<UUID, Double> dragonDamage = new HashMap<>();
     private boolean firstDragonKilled = false;
 
-    public EventManager(Main plugin) {
+    public EventManager(StatsMain plugin) {
         this.plugin = plugin;
         this.gson = new GsonBuilder().setPrettyPrinting().create();
         this.dataFile = new File(plugin.getDataFolder(), "event_data.json");

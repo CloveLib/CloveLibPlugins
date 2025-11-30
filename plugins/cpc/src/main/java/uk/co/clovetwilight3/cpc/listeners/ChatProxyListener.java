@@ -19,7 +19,7 @@ public class ChatProxyListener implements Listener {
             return; // Ignore players without a system
         }
 
-        CpcMain.SystemData systemData = ClovesPluralCraft.systemDataMap.get(playerUUID);
+        CpcMain.SystemData systemData = CpcMain.systemDataMap.get(playerUUID);
         if (systemData.activeFront == null || systemData.activeFront.isEmpty()) {
             return; // Ignore players who aren't fronting
         }

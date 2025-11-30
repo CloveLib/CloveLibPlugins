@@ -1,19 +1,19 @@
 rootProject.name = 'ClovePlugins'
 
 // Include all plugin subprojects
-include 'plugins:clovelib'
-include 'plugins:cpc'
-include 'plugins:endrace'
-include 'plugins:estrocord'
-include 'plugins:jailedwings'
-include 'plugins:statsend'
-include 'plugins:wingsync'
+include 'clovelib'
+include 'cpc'
+include 'endrace'
+include 'estrocord'
+include 'jailedwings'
+include 'statsend'
+include 'wingsync'
 
-// Set project names to match the directory names
-project(':plugins:clovelib').name = 'clovelib'
-project(':plugins:cpc').name = 'cpc'
-project(':plugins:endrace').name = 'endrace'
-project(':plugins:estrocord').name = 'estrocord'
-project(':plugins:jailedwings').name = 'jailedwings'
-project(':plugins:statsend').name = 'statsend'
-project(':plugins:wingsync').name = 'wingsync'
+// Set project directories to point to the actual locations
+project(':clovelib').projectDir = file('plugins/clovelib')
+project(':cpc').projectDir = file('plugins/cpc')
+project(':endrace').projectDir = file('plugins/endrace')
+project(':estrocord').projectDir = file('plugins/estrocord')
+project(':jailedwings').projectDir = file('plugins/jailedwings')
+project(':statsend').projectDir = file('plugins/statsend')
+project(':wingsync').projectDir = file('plugins/wingsync')

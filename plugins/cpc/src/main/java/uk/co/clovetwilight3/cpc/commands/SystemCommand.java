@@ -1,6 +1,6 @@
-package com.mazeymoos.cpc.commands;
+package uk.co.clovetwilight3.cpc.commands;
 
-import com.mazeymoos.cpc.ClovesPluralCraft;
+import uk.co.clovetwilight3.cpc.CpcMain;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -53,36 +53,36 @@ public class SystemCommand implements CommandExecutor {
     }
 
     private void createSystem(UUID uuid, String name, CommandSender sender) {
-        if (ClovesPluralCraft.systemDataMap.containsKey(uuid)) {
+        if (CpcMain.systemDataMap.containsKey(uuid)) {
             sender.sendMessage(ChatColor.RED + "You already have a system!");
             return;
         }
 
-        ClovesPluralCraft.SystemData newSystem = new ClovesPluralCraft.SystemData(name);
-        ClovesPluralCraft.systemDataMap.put(uuid, newSystem);
-        ClovesPluralCraft.saveSystem(uuid);
+        CpcMain.SystemData newSystem = new CpcMain.SystemData(name);
+        CpcMain.systemDataMap.put(uuid, newSystem);
+        CpcMain.saveSystem(uuid);
         sender.sendMessage(ChatColor.GREEN + "System '" + name + "' created!");
     }
 
     private void renameSystem(UUID uuid, String newName, CommandSender sender) {
-        if (!ClovesPluralCraft.systemDataMap.containsKey(uuid)) {
+        if (!CpcMain.systemDataMap.containsKey(uuid)) {
             sender.sendMessage(ChatColor.RED + "You do not have a system!");
             return;
         }
 
-        ClovesPluralCraft.systemDataMap.get(uuid).systemName = newName;
-        ClovesPluralCraft.saveSystem(uuid);
+        CpcMain.systemDataMap.get(uuid).systemName = newName;
+        CpcMain.saveSystem(uuid);
         sender.sendMessage(ChatColor.GREEN + "System renamed to '" + newName + "'!");
     }
 
     private void removeSystem(UUID uuid, CommandSender sender) {
-        if (!ClovesPluralCraft.systemDataMap.containsKey(uuid)) {
+        if (!CpcMain.systemDataMap.containsKey(uuid)) {
             sender.sendMessage(ChatColor.RED + "You do not have a system to remove!");
             return;
         }
 
-        ClovesPluralCraft.systemDataMap.remove(uuid);
-        ClovesPluralCraft.saveSystem(uuid);
+        CpcMain.systemDataMap.remove(uuid);
+        CpcMain.saveSystem(uuid);
         sender.sendMessage(ChatColor.GREEN + "Your system has been removed!");
     }
 }

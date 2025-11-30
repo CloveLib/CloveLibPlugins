@@ -1,6 +1,6 @@
-package com.mazeymoos.cpc.commands;
+package uk.co.clovetwilight3.cpc.commands;
 
-import com.mazeymoos.cpc.ClovesPluralCraft;
+import uk.co.clovetwilight3.cpc.CpcMain;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
@@ -25,11 +25,11 @@ public class FrontCommandTabCompleter implements TabCompleter {
             return List.of("add", "delete", "set", "clear", "skin"); // Main subcommands
         }
 
-        if (!ClovesPluralCraft.systemDataMap.containsKey(playerUUID)) {
+        if (!CpcMain.systemDataMap.containsKey(playerUUID)) {
             return null; // No suggestions if the player doesn't have a system
         }
 
-        Map<String, Boolean> fronts = ClovesPluralCraft.systemDataMap.get(playerUUID).fronts;
+        Map<String, Boolean> fronts = CpcMain.systemDataMap.get(playerUUID).fronts;
 
         if (args.length == 2) {
             if (args[0].equalsIgnoreCase("add")) {

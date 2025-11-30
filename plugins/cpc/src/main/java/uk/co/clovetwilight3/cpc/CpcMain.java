@@ -1,6 +1,6 @@
 package uk.co.clovetwilight3.cpc;
 
-import net.skinsrestorer.api.SkinsRestorerProvider;
+// import net.skinsrestorer.api.SkinsRestorerProvider; // Commented out - not used yet
 import org.bukkit.plugin.java.JavaPlugin;
 import uk.co.clovetwilight3.cpc.commands.SystemCommand;
 import uk.co.clovetwilight3.cpc.commands.FrontCommand;

@@ -19,7 +19,7 @@ import java.util.UUID;
 public class EndPortalHandler {
     private final Set<UUID> playersTouchedEndPortal;
     private final PlayerDataManager playerDataManager;
-    private final App plugin;
+    private final RaceMain plugin;
 
     /**
      * Constructor for the EndPortalHandler.
@@ -27,7 +27,7 @@ public class EndPortalHandler {
      * @param playersTouchedEndPortal The set of players that have touched the end portal
      * @param playerDataManager The PlayerDataManager instance
      */
-    public EndPortalHandler(App plugin, Set<UUID> playersTouchedEndPortal, PlayerDataManager playerDataManager) {
+    public EndPortalHandler(RaceMain plugin, Set<UUID> playersTouchedEndPortal, PlayerDataManager playerDataManager) {
         this.plugin = plugin;
         this.playersTouchedEndPortal = playersTouchedEndPortal;
         this.playerDataManager = playerDataManager;
@@ -57,7 +57,7 @@ public class EndPortalHandler {
                         String formattedTime = plugin.formatTime(data.totalPlayTime);
                         data.lastLoginTime = System.currentTimeMillis();
                         plugin.getServer().broadcastMessage(event.getPlayer().getName() + " has reached the end, and it took them\n" + formattedTime + " of playtime.");
-                        
+
                         // Update the scoreboard to show the final time in green
                         Player player = event.getPlayer();
                         Objective objective = player.getScoreboard().getObjective(DisplaySlot.SIDEBAR);

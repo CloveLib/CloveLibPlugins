@@ -5,7 +5,7 @@
 
 package uk.co.clovetwilight3.estrocord.listeners;
 
-import uk.co.clovetwilight3.estrocord.EstrocordPlugin;
+import uk.co.clovetwilight3.estrocord.EstroMain;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
@@ -20,9 +20,9 @@ import org.bukkit.scheduler.BukkitRunnable;
 public class PotionUseListener implements Listener {
 
     private final NamespacedKey potionTypeKey;
-    private final EstrocordPlugin plugin;
+    private final EstroMain plugin;
 
-    public PotionUseListener(EstrocordPlugin plugin) {
+    public PotionUseListener(EstroMain plugin) {
         this.plugin = plugin;
         potionTypeKey = new NamespacedKey(plugin, "potionType");
     }

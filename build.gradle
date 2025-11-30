@@ -1,12 +1,12 @@
 plugins {
     id 'java'
-    id 'com.github.johnrengelman.shadow' version '8.1.1' apply false
+    id 'com.gradleup.shadow' version '8.3.5' apply false
 }
 
 // Common configuration for all subprojects
 subprojects {
     apply plugin: 'java'
-    apply plugin: 'com.github.johnrengelman.shadow'
+    apply plugin: 'com.gradleup.shadow'
 
     group = 'uk.co.clovetwilight3'
 
@@ -52,6 +52,18 @@ subprojects {
     }
 
     build.finalizedBy copyJar
+}
+
+// Configure subprojects that depend on clovelib to use compileOnly dependency
+configure(subprojects.findAll { it.name in ['estrocord', 'jailedwings', 'wingsync'] }) {
+    dependencies {
+        compileOnly project(':clovelib')
+    }
+
+    // Ensure clovelib compiles first
+    tasks.named('compileJava') {
+        dependsOn ':clovelib:compileJava'
+    }
 }
 
 // Task to build all plugins

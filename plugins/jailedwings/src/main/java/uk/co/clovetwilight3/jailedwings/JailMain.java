@@ -1,8 +1,6 @@
 /*
- * Copyright (c) 2025 Mazey-Jessica Emily Twilight
- * Copyright (c) 2025 UnifiedGaming Systems Ltd (Company Number: 16108983)
- * Licensed under the Apache License, Version 2.0
- * http://www.apache.org/licenses/LICENSE-2.0
+ * Copyright (c) 2025 Clove Twilight
+ * Licensed under the MIT License
  */
 
 package uk.co.clovetwilight3.jailedwings;
@@ -22,8 +20,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import uk.co.clovetwilight3.clovelib.LibMain;
+import uk.co.clovetwilight3.clovelib.JailData;
 
-public class JailPlugin extends JavaPlugin implements Listener {
+public class JailMain extends JavaPlugin implements Listener {
     private Location jailLocation;
     private Location unjailLocation;
     private final Map<UUID, Long> jailedPlayers = new HashMap<>();
@@ -36,7 +35,7 @@ public class JailPlugin extends JavaPlugin implements Listener {
                 LibMain cloveLib = LibMain.getInstance();
                 if (cloveLib == null) {
                     getLogger().severe("CloveLib is still not initialized! Disabling JailPlugin.");
-                    getServer().getPluginManager().disablePlugin(JailPlugin.this);
+                    getServer().getPluginManager().disablePlugin(JailMain.this);
                     return;
                 }
 
@@ -47,7 +46,7 @@ public class JailPlugin extends JavaPlugin implements Listener {
                 saveDefaultConfig();
                 loadLocations();
                 startUnjailTask();
-                getServer().getPluginManager().registerEvents(JailPlugin.this, JailPlugin.this);
+                getServer().getPluginManager().registerEvents(JailMain.this, JailMain.this);
 
                 getLogger().info("JailPlugin has been enabled successfully!");
             }
@@ -63,7 +62,7 @@ public class JailPlugin extends JavaPlugin implements Listener {
     @Override
     public void onLoad() {
         getLogger().info("JailPlugin is loading...");
-        CloveLib cloveLib = CloveLib.getInstance();
+        LibMain cloveLib = LibMain.getInstance();
         if (cloveLib == null) {
             getLogger().warning("CloveLib instance is null during JailPlugin onLoad. This may resolve during onEnable.");
         } else {
@@ -78,7 +77,7 @@ public class JailPlugin extends JavaPlugin implements Listener {
             Player attacker = (Player) event.getDamager();
             Player victim = (Player) event.getEntity();
 
-            if (CloveLib.getInstance().isPlayerJailed(attacker.getUniqueId())) {
+            if (LibMain.getInstance().isPlayerJailed(attacker.getUniqueId())) {
                 attacker.sendMessage(ChatColor.RED + "You cannot attack other players while jailed!");
                 event.setCancelled(true);
             }
@@ -266,7 +265,7 @@ public class JailPlugin extends JavaPlugin implements Listener {
 
         LibMain cloveLib = LibMain.getInstance();
         if (cloveLib != null) {
-            cloveLib.setPlayerJailData(target.getUniqueId(), new CloveLib.JailData(true, System.currentTimeMillis() + jailTime, jailLocation, unjailLocation));
+            cloveLib.setPlayerJailData(target.getUniqueId(), new JailData(true, System.currentTimeMillis() + jailTime, jailLocation, unjailLocation));
         } else {
             getLogger().severe("CloveLib instance is null while jailing a player!");
         }
@@ -295,7 +294,7 @@ public class JailPlugin extends JavaPlugin implements Listener {
         target.sendMessage(ChatColor.GREEN + "You have been released from jail!");
         sender.sendMessage(ChatColor.GREEN + "Player " + target.getName() + " has been released from jail!");
 
-        CloveLib.getInstance().clearPlayerJailData(target.getUniqueId());
+        LibMain.getInstance().clearPlayerJailData(target.getUniqueId());
 
         return true;
     }

@@ -1,7 +1,7 @@
-package com.mazeymoos.cpc.commands;
+package uk.co.clovetwilight3.cpc.commands;
 
-import com.mazeymoos.cpc.ClovesPluralCraft;
-// import com.mazeymoos.cpc.utils.SkinManager; - Work in Progress
+import uk.co.clovetwilight3.cpc.CpcMain;
+// import uk.co.clovetwilight3.cpc.utils.SkinManager; - Work in Progress
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -67,47 +67,47 @@ public class FrontCommand implements CommandExecutor {
     }
 
     private void addFront(UUID uuid, String frontName, CommandSender sender) {
-        if (!ClovesPluralCraft.systemDataMap.containsKey(uuid)) {
+        if (!CpcMain.systemDataMap.containsKey(uuid)) {
             sender.sendMessage(ChatColor.RED + "You do not have a system!");
             return;
         }
-        ClovesPluralCraft.systemDataMap.get(uuid).fronts.put(frontName, true);
-        ClovesPluralCraft.saveSystem(uuid);
+        CpcMain.systemDataMap.get(uuid).fronts.put(frontName, true);
+        CpcMain.saveSystem(uuid);
         sender.sendMessage(ChatColor.GREEN + "Front '" + frontName + "' added!");
     }
 
     private void deleteFront(UUID uuid, String frontName, CommandSender sender) {
-        if (!ClovesPluralCraft.systemDataMap.containsKey(uuid)) {
+        if (!CpcMain.systemDataMap.containsKey(uuid)) {
             sender.sendMessage(ChatColor.RED + "You do not have a system!");
             return;
         }
-        if (!ClovesPluralCraft.systemDataMap.get(uuid).fronts.containsKey(frontName)) {
+        if (!CpcMain.systemDataMap.get(uuid).fronts.containsKey(frontName)) {
             sender.sendMessage(ChatColor.RED + "Front '" + frontName + "' does not exist!");
             return;
         }
-        ClovesPluralCraft.systemDataMap.get(uuid).fronts.remove(frontName);
-        ClovesPluralCraft.systemDataMap.get(uuid).frontSkins.remove(frontName); // Remove associated skin
-        ClovesPluralCraft.saveSystem(uuid);
+        CpcMain.systemDataMap.get(uuid).fronts.remove(frontName);
+        CpcMain.systemDataMap.get(uuid).frontSkins.remove(frontName); // Remove associated skin
+        CpcMain.saveSystem(uuid);
         sender.sendMessage(ChatColor.GREEN + "Front '" + frontName + "' deleted!");
     }
 
     private void setFront(Player player, String frontName, CommandSender sender) {
         UUID uuid = player.getUniqueId();
 
-        if (!ClovesPluralCraft.systemDataMap.containsKey(uuid)) {
+        if (!CpcMain.systemDataMap.containsKey(uuid)) {
             sender.sendMessage(ChatColor.RED + "You do not have a system!");
             return;
         }
-        if (!ClovesPluralCraft.systemDataMap.get(uuid).fronts.containsKey(frontName)) {
+        if (!CpcMain.systemDataMap.get(uuid).fronts.containsKey(frontName)) {
             sender.sendMessage(ChatColor.RED + "Front '" + frontName + "' does not exist!");
             return;
         }
 
-        ClovesPluralCraft.systemDataMap.get(uuid).activeFront = frontName;
-        ClovesPluralCraft.saveSystem(uuid);
+        CpcMain.systemDataMap.get(uuid).activeFront = frontName;
+        CpcMain.saveSystem(uuid);
 
         // Apply skin when fronting
-        String skin = ClovesPluralCraft.systemDataMap.get(uuid).frontSkins.get(frontName);
+        String skin = CpcMain.systemDataMap.get(uuid).frontSkins.get(frontName);
         if (skin != null && !skin.isEmpty()) {
             player.sendMessage(ChatColor.YELLOW + "This has not been implemented yet!");
             // SkinManager.applySkin(player, skin);
@@ -117,31 +117,31 @@ public class FrontCommand implements CommandExecutor {
     }
 
     private void clearFront(UUID uuid, CommandSender sender) {
-        if (!ClovesPluralCraft.systemDataMap.containsKey(uuid)) {
+        if (!CpcMain.systemDataMap.containsKey(uuid)) {
             sender.sendMessage(ChatColor.RED + "You do not have a system!");
             return;
         }
-        ClovesPluralCraft.systemDataMap.get(uuid).activeFront = "";
-        ClovesPluralCraft.saveSystem(uuid);
+        CpcMain.systemDataMap.get(uuid).activeFront = "";
+        CpcMain.saveSystem(uuid);
         sender.sendMessage(ChatColor.GREEN + "Front cleared!");
     }
 
     private void setFrontSkin(UUID uuid, String frontName, String skinInput, CommandSender sender) {
-        if (!ClovesPluralCraft.systemDataMap.containsKey(uuid)) {
+        if (!CpcMain.systemDataMap.containsKey(uuid)) {
             sender.sendMessage(ChatColor.RED + "You do not have a system!");
             return;
         }
-        if (!ClovesPluralCraft.systemDataMap.get(uuid).fronts.containsKey(frontName)) {
+        if (!CpcMain.systemDataMap.get(uuid).fronts.containsKey(frontName)) {
             sender.sendMessage(ChatColor.RED + "Front '" + frontName + "' does not exist!");
             return;
         }
 
-        ClovesPluralCraft.systemDataMap.get(uuid).frontSkins.put(frontName, skinInput);
-        ClovesPluralCraft.saveSystem(uuid);
+        CpcMain.systemDataMap.get(uuid).frontSkins.put(frontName, skinInput);
+        CpcMain.saveSystem(uuid);
         sender.sendMessage(ChatColor.GREEN + "Skin set for front '" + frontName + "'!");
 
         // Test the skin immediately if this is the active front
-        if (frontName.equals(ClovesPluralCraft.systemDataMap.get(uuid).activeFront)) {
+        if (frontName.equals(CpcMain.systemDataMap.get(uuid).activeFront)) {
             Player player = (Player) sender;
             player.sendMessage(ChatColor.YELLOW + "Applying skin...");
             // SkinManager.applySkin(player, skinInput);
