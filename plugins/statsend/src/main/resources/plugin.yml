@@ -1,0 +1,27 @@
+name: end-stats-paper
+version: ${project.version}
+main: uk.co.clovetwilight3.statsend.StatsMain
+api-version: 1.21
+author: CloveTwilight3
+description: ${project.description}
+website: https://github.com/clovetwilight3/
+
+commands:
+  estart:
+    description: Start the dragon event
+    usage: /<command>
+    permission: statsend.admin
+    permission-message: You don't have permission to use this command!
+  estop:
+    description: Stop and reset the dragon event
+    usage: /<command>
+    permission: statsend.admin
+    permission-message: You don't have permission to use this command!
+
+permissions:
+  statsend.admin:
+    description: Admin permissions for dragon event
+    default: op
+  statsend.participate:
+    description: Permission to participate in dragon events
+    default: true

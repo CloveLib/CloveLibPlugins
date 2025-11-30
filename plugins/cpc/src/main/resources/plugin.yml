@@ -1,0 +1,25 @@
+name: ClovesPluralCraft
+main: uk.co.clovetwilight3.cpc.CpcMain
+version: 1.0.1
+api-version: 1.21.10
+author: CloveTwilight3
+# depend: [SkinsRestorer]
+description: "This plugin is for people that are plural, to help proxy their messages"
+commands:
+  system:
+    description: "Manage your system"
+    usage: "/system <create|rename|remove> [name]"
+    permission: clovespluralcraft.system
+    aliases: [sys]
+  front:
+    description: "Manage your front"
+    usage: "/front <add|delete|set|clear> [name]"
+    permission: clovespluralcraft.front
+    aliases: [member, proxy, f, fr]
+permissions:
+  clovespluralcraft.system:
+    description: "Allows players to manage their system"
+    default: true
+  clovespluralcraft.front:
+    description: "Allows players to manage their front"
+    default: true

@@ -1,0 +1,4 @@
+name: endrace
+version: 1.0
+main: uk.co.clovetwilight3.endrace.RaceMain
+api-version: 1.13
