@@ -118,8 +118,8 @@ public class EstroMain extends JavaPlugin {
 
         // Ban commands (via CloveLib)
         BanCommandExecutor banExecutor = new BanCommandExecutor(this);
-        getCommand("ban").setExecutor(banExecutor);
-        getCommand("ban").setTabCompleter(banExecutor);
+        getCommand("ecban").setExecutor(banExecutor);
+        getCommand("ecban").setTabCompleter(banExecutor);
 
         UnbanCommandExecutor unbanExecutor = new UnbanCommandExecutor(this);
         getCommand("unban").setExecutor(unbanExecutor);

@@ -36,7 +36,7 @@ public class BanCommandExecutor implements CommandExecutor, TabCompleter {
         }
 
         if (args.length < 1) {
-            sender.sendMessage(ChatColor.RED + "Usage: /ban <player> [reason]");
+            sender.sendMessage(ChatColor.RED + "Usage: /ecban <player> [reason]");
             return true;
         }
 

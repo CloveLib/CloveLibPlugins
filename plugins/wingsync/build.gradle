@@ -6,7 +6,7 @@ dependencies {
     // Depends on CloveLib
     compileOnly project(':clovelib')
 
-    // JDA for Discord bot
+    // JDA for Discord bot (will pull in all transitive dependencies)
     implementation 'net.dv8tion:JDA:5.0.0-beta.24'
 
     // Gson for JSON storage
@@ -21,20 +21,30 @@ tasks.named('compileJava') {
 shadowJar {
     archiveBaseName.set('WingSync')
 
-    // Relocate dependencies to avoid conflicts
+    // Relocate JDA and its dependencies to avoid conflicts
     relocate 'net.dv8tion', 'uk.co.clovetwilight3.libs.jda'
+    relocate 'com.neovisionaries', 'uk.co.clovetwilight3.libs.neovisionaries'
+    relocate 'okhttp3', 'uk.co.clovetwilight3.libs.okhttp3'
+    relocate 'okio', 'uk.co.clovetwilight3.libs.okio'
+    relocate 'gnu.trove', 'uk.co.clovetwilight3.libs.trove'
+    relocate 'com.fasterxml.jackson', 'uk.co.clovetwilight3.libs.jackson'
+    relocate 'org.apache.commons', 'uk.co.clovetwilight3.libs.commons'
+    relocate 'kotlin', 'uk.co.clovetwilight3.libs.kotlin'
+    relocate 'org.jetbrains', 'uk.co.clovetwilight3.libs.jetbrains'
+    relocate 'org.intellij', 'uk.co.clovetwilight3.libs.intellij'
+    relocate 'org.slf4j', 'uk.co.clovetwilight3.libs.slf4j'
 
-    dependencies {
-        include(dependency('net.dv8tion:JDA'))
-        include(dependency('com.google.code.gson:gson'))
-        // Include JDA transitive dependencies
-        include(dependency('com.neovisionaries:nv-websocket-client'))
-        include(dependency('com.squareup.okhttp3:okhttp'))
-        include(dependency('com.squareup.okio:okio'))
-        include(dependency('org.apache.commons:commons-collections4'))
-        include(dependency('net.sf.trove4j:trove4j'))
-        include(dependency('com.fasterxml.jackson.core:jackson-core'))
-        include(dependency('com.fasterxml.jackson.core:jackson-databind'))
-        include(dependency('com.fasterxml.jackson.core:jackson-annotations'))
-    }
+    // Merge service files (important for OkHttp/Okio)
+    mergeServiceFiles()
+
+    // Include ALL runtime dependencies (this is the key change)
+    configurations = [project.configurations.runtimeClasspath]
+
+    // Exclude unnecessary files to reduce JAR size
+    exclude 'META-INF/*.SF'
+    exclude 'META-INF/*.DSA'
+    exclude 'META-INF/*.RSA'
+    exclude 'META-INF/MANIFEST.MF'
+    exclude 'META-INF/maven/**'
+    exclude 'META-INF/versions/**'
 }

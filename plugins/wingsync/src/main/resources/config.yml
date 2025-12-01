@@ -1,23 +1,51 @@
 # Copyright (c) 2025 Clove Twilight
 # Licensed under the MIT License
-# WingSync
+# WingSync - Discord Whitelist Sync Plugin
+
+# ========================================
+# DISCORD BOT CONFIGURATION
+# ========================================
+# To get your bot token:
+# 1. Go to https://discord.com/developers/applications
+# 2. Create a new application or select existing one
+# 3. Go to "Bot" section
+# 4. Click "Reset Token" or "Copy" to get your token
+# 5. Paste it below (keep the quotes!)
+#
+# After updating this file, use /wsreload in-game to connect the bot.
+# ========================================
 
 discord:
+  # Your Discord bot token - REQUIRED
+  # Replace YOUR_DISCORD_BOT_TOKEN with your actual token
   token: "YOUR_DISCORD_BOT_TOKEN"
+
+  # Your Discord user ID (for admin permissions on /remove command)
+  # To get your ID: Enable Developer Mode in Discord settings,
+  # then right-click yourself and click "Copy User ID"
   admin_id: "YOUR_DISCORD_ADMIN_ID"
 
-  mysql:
-    enabled: false # Change me to true to use MySql
-    host: localhost
-    database: minecraft
-    username: root
-    password: password123
-    port: 3306
+# ========================================
+# DATABASE CONFIGURATION
+# ========================================
+# By default, WingSync uses file-based storage (playerdata.json)
+# Enable MySQL below if you want database storage instead.
 
-  plugin:
-    messages:
-      enabled: "WhitelistPlugin has been enabled!"
-      disabled: "WhitelistPlugin has been disabled!"
-      whitelist_added: "Player {player} has been added to the whitelist by {user}."
-      whitelist_removed: "Player {player} has been removed from the whitelist by {user}."
-      no_permission: "You do not have permission to perform this action."
+mysql:
+  enabled: false
+  host: localhost
+  port: 3306
+  database: minecraft
+  username: root
+  password: password123
+
+# ========================================
+# MESSAGES (Future use)
+# ========================================
+plugin:
+  messages:
+    enabled: "WingSync has been enabled!"
+    disabled: "WingSync has been disabled!"
+    whitelist_added: "Player {player} has been added to the whitelist by {user}."
+    whitelist_removed: "Player {player} has been removed from the whitelist by {user}."
+    no_permission: "You do not have permission to perform this action."

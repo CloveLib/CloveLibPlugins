@@ -8,6 +8,8 @@ package uk.co.clovetwilight3.wingsync;
 
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
@@ -46,6 +48,7 @@ public class Main extends JavaPlugin {
     private File dataFile;
     private Map<String, PlayerData> playerDataMap = new HashMap<>();
     private Gson gson = new Gson();
+    private boolean botConnected = false;
 
     // Inner class to store player data
     public static class PlayerData {
@@ -89,11 +92,43 @@ public class Main extends JavaPlugin {
             getLogger().warning("CloveLib not found! Ban integration will not work.");
         }
 
+        // Try to connect the Discord bot (gracefully handle failure)
+        connectDiscordBot();
+    }
+
+    /**
+     * Attempts to connect the Discord bot.
+     * Returns true if successful, false otherwise.
+     * Does not crash the plugin on failure.
+     */
+    private boolean connectDiscordBot() {
+        // Disconnect existing bot if connected
+        if (jda != null) {
+            getLogger().info("Disconnecting existing Discord bot...");
+            jda.shutdown();
+            try {
+                if (!jda.awaitShutdown(10, TimeUnit.SECONDS)) {
+                    jda.shutdownNow();
+                }
+            } catch (InterruptedException e) {
+                jda.shutdownNow();
+            }
+            jda = null;
+            botConnected = false;
+        }
+
         String token = getConfig().getString("discord.token");
-        if (token == null || token.isEmpty()) {
-            getLogger().severe("Discord token is not set in config.yml!");
-            Bukkit.getPluginManager().disablePlugin(this);
-            return;
+
+        // Check if token is not set or is still the default placeholder
+        if (token == null || token.isEmpty() || token.equals("YOUR_DISCORD_BOT_TOKEN")) {
+            getLogger().warning("========================================");
+            getLogger().warning("Discord bot token is not configured!");
+            getLogger().warning("Please edit plugins/WingSync/config.yml");
+            getLogger().warning("and set your Discord bot token.");
+            getLogger().warning("Then use /wsreload to connect the bot.");
+            getLogger().warning("========================================");
+            botConnected = false;
+            return false;
         }
 
         try {
@@ -104,10 +139,27 @@ public class Main extends JavaPlugin {
                     .build();
 
             jda.awaitReady();
+            botConnected = true;
             getLogger().info("Discord bot connected successfully!");
+            return true;
+        } catch (net.dv8tion.jda.api.exceptions.InvalidTokenException e) {
+            getLogger().severe("========================================");
+            getLogger().severe("Invalid Discord bot token!");
+            getLogger().severe("Please check your token in config.yml");
+            getLogger().severe("and use /wsreload to reconnect.");
+            getLogger().severe("========================================");
+            botConnected = false;
+            return false;
         } catch (InterruptedException e) {
+            getLogger().severe("Discord bot connection was interrupted!");
+            getLogger().severe("Use /wsreload to try again.");
+            botConnected = false;
+            return false;
+        } catch (Exception e) {
             getLogger().severe("Failed to connect Discord bot: " + e.getMessage());
-            Bukkit.getPluginManager().disablePlugin(this);
+            getLogger().severe("Use /wsreload to try again after fixing the issue.");
+            botConnected = false;
+            return false;
         }
     }
 
@@ -131,6 +183,54 @@ public class Main extends JavaPlugin {
             }
         }
         getLogger().info("WingSync Disabled");
+    }
+
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (command.getName().equalsIgnoreCase("wsreload")) {
+            if (!sender.hasPermission("wingsync.reload")) {
+                sender.sendMessage("§cYou don't have permission to use this command!");
+                return true;
+            }
+
+            sender.sendMessage("§eReloading WingSync configuration...");
+
+            // Reload config
+            reloadConfig();
+
+            // Reload storage settings
+            boolean newUseMysql = getConfig().getBoolean("mysql.enabled", false);
+            if (newUseMysql != useMysql) {
+                useMysql = newUseMysql;
+                if (useMysql) {
+                    setupDatabase();
+                    sender.sendMessage("§aSwitched to MySQL storage.");
+                } else {
+                    closeDatabaseConnection();
+                    setupFileStorage();
+                    sender.sendMessage("§aSwitched to file-based storage.");
+                }
+            }
+
+            // Reconnect Discord bot
+            sender.sendMessage("§eReconnecting Discord bot...");
+            if (connectDiscordBot()) {
+                sender.sendMessage("§aWingSync reloaded successfully! Discord bot connected.");
+            } else {
+                sender.sendMessage("§cWingSync config reloaded, but Discord bot failed to connect.");
+                sender.sendMessage("§cCheck console for details and fix config.yml.");
+            }
+
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Check if the Discord bot is connected
+     */
+    public boolean isBotConnected() {
+        return botConnected && jda != null && jda.getStatus() == JDA.Status.CONNECTED;
     }
 
     private void setupFileStorage() {
@@ -478,7 +578,7 @@ public class Main extends JavaPlugin {
 
             String playerName = event.getOption("player").getAsString();
             String discordId = event.getUser().getId();
-            String discordUsername = event.getUser().getAsTag();
+            String discordUsername = event.getUser().getName();
 
             Bukkit.getScheduler().runTask(Main.this, () -> {
                 try {
