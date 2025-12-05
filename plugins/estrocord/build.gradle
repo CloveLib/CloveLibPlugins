@@ -16,7 +16,7 @@ tasks.named('compileJava') {
 }
 
 shadowJar {
-    archiveBaseName.set('EstrocordPlugin')
+    archiveBaseName.set('Estrocord')
 
     // Include json-simple in the jar
     dependencies {

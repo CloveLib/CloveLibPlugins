@@ -1,5 +1,5 @@
 // Clove's PluralCraft - Plural system support plugin
-version = '1.0.1'
+version = '2.0.0'
 description = "Plugin for plural systems to proxy their messages"
 
 dependencies {
@@ -8,5 +8,5 @@ dependencies {
 }
 
 shadowJar {
-    archiveBaseName.set('ClovesPluralCraft')
+    archiveBaseName.set('CPC')
 }
