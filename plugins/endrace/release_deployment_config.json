@@ -4,7 +4,7 @@
   "changelog_path": "/plugins/endrace/CHANGELOG.md",
   "version_path": "/plugins/endrace/VERSION",
   "modrinth": {
-    "project_id": "BhM3evQH", # TODO
+    "project_id": "BhM3evQH",
     "supported_versions": [
       "1.21",
       "1.21.1",
@@ -23,9 +23,8 @@
     "loaders": [
       "spigot",
       "purpur",
-      "bukkit"
-      "paper",
-      "folia"
+      "bukkit",
+      "paper"
     ],
     "featured": true
   }
