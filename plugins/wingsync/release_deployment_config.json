@@ -23,7 +23,7 @@
     "loaders": [
       "spigot",
       "purpur",
-      "bukkit"
+      "bukkit",
       "paper",
       "folia"
     ],
