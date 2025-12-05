@@ -1,5 +1,11 @@
 // WingSync - Discord whitelist sync plugin
-version = '3.2.0'
+// Read version from VERSION file
+def versionFile = file('VERSION')
+if (versionFile.exists()) {
+    version = versionFile.text.trim()
+} else {
+    version = '3.2.0'  // fallback
+}
 description = "Discord bot integration for whitelist management"
 
 dependencies {
