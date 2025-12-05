@@ -1,8 +1,8 @@
 {
   "project_name": "WingSync",
-  "plugin_jar_path": "/plugins/wingsync/build/libs/WingSync-%VERSION%.jar",
-  "changelog_path": "/plugins/wingsync/CHANGELOG.md",
-  "version_path": "/plugins/wingsync/VERSION",
+  "plugin_jar_path": "plugins/wingsync/build/libs/WingSync-%VERSION%.jar",
+  "changelog_path": "plugins/wingsync/CHANGELOG.md",
+  "version_path": "plugins/wingsync/VERSION",
   "modrinth": {
     "project_id": "BhM3evQH",
     "supported_versions": [
