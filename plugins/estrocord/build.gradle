@@ -1,5 +1,11 @@
 // Estrocord - Main feature plugin
-version = '5.0.0'
+// Read version from VERSION file
+def versionFile = file('VERSION')
+if (versionFile.exists()) {
+    version = versionFile.text.trim()
+} else {
+    version = '5.0.0'  // fallback
+}
 description = "Estrocord Plugin - Feature-rich Minecraft plugin"
 
 dependencies {
