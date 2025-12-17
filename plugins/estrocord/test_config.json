@@ -6,6 +6,14 @@
   "curseforge": {
     "project_id": "1196718",
     "game_versions": [ 9957, 9956 ],
-    "release_type": "beta"
+    "release_type": "beta",
+    "relations": {
+      "projects": [
+        {
+          "slug": "clovelib",
+          "type": "requiredDependency"
+        }
+      ]
+    }
   }
 }
