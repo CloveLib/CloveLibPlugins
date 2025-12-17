@@ -7,6 +7,11 @@
     "project_id": "1196718",
     "type": "plugin",
     "game_versions": [ "1.19", "1.19.4", "1.20", "1.20.6", "1.21", "1.21.4" ],
-    "release_type": "beta"
+    "release_type": "beta",
+    "relations": {
+      "projects": [
+        { "slug": "clovelib", "type": "requiredDependency" }
+      ]
+    }
   }
 }
