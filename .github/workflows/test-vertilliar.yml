@@ -1,4 +1,4 @@
-name: Deploy Estrocord
+name: Test Curseforge
 
 on:
   workflow_dispatch:
