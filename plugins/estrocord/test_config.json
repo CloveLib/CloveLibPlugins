@@ -5,7 +5,7 @@
   "version_path": "/plugins/estrocord/VERSION",
   "curseforge": {
     "project_id": "1196718",
-    "game_versions": [ 10568, 10785, 11092, 11213, 11596 ],
+    "game_versions": [ 5, 10568, 10785, 11092, 11213, 11596 ],
     "release_type": "beta",
     "relations": {
       "projects": [
