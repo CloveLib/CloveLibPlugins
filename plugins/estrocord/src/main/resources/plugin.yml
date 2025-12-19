@@ -3,18 +3,17 @@
 
 name: EstrocordPlugin
 version: 5.0.0
-main: uk.co.clovetwilight3.estrocord.EstroMain
+main: win.clovelib.estrocord.EstroMain
 api-version: '1.21'
 depend: [CloveLib]
-authors:
-  - "CloveTwilight3"
-website: "https://github.com/CloveLib/Estrocord"
+author: CloveLib Studios
+website: "https://www.clovelib.win/docs/estrocord"
 
 
 # Commands
 commands:
   # Ban commands (via CloveLib)
-  ban:
+  ecban:
     description: Ban a player from the server
     usage: /ban <player> [reason]
     permission: estrocord.ban

@@ -1,7 +1,7 @@
 name: EndRace
-main: uk.co.clovetwilight3.endrace.RaceMain
+main: win.clovelib.endrace.RaceMain
 version: 2.0.0
 api-version: '1.21.10'
-description: Shared library for Clove's Plugins - provides ban system, jail system, and cross-plugin events.
-author: CloveTwilight3
-website: https://github.com/CloveLib/CloveLibPlugins
+description: A race to the end
+author: CloveLib Studios
+website: https://www.clovelib.win/docs/endrace

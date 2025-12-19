@@ -1,0 +1,16 @@
+// CloveLib - Core library plugin
+def versionFile = file('VERSION')
+if (versionFile.exists()) {
+    version = versionFile.text.trim()
+} else {
+    version = '5.0.0'  // fallback
+}
+description = "CloveLib - A Library plugin for Clove's Plugins"
+
+dependencies {
+    // CloveLib has no additional dependencies beyond Paper API
+}
+
+shadowJar {
+    archiveBaseName.set('CloveLibAPI')
+}

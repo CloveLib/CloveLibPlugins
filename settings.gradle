@@ -1,7 +1,7 @@
-rootProject.name = 'ClovePlugins'
+rootProject.name = 'CloveLibPlugins'
 
 // Include all plugin subprojects
-include 'clovelib'
+include 'clovelibapi'
 include 'cpc'
 include 'endrace'
 include 'estrocord'
@@ -10,7 +10,7 @@ include 'statsend'
 include 'wingsync'
 
 // Set project directories to point to the actual locations
-project(':clovelib').projectDir = file('plugins/clovelib')
+project(':clovelibapi').projectDir = file('plugins/clovelibapi')
 project(':cpc').projectDir = file('plugins/cpc')
 project(':endrace').projectDir = file('plugins/endrace')
 project(':estrocord').projectDir = file('plugins/estrocord')

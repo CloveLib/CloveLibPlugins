@@ -10,7 +10,7 @@ description = "Estrocord Plugin - Feature-rich Minecraft plugin"
 
 dependencies {
     // Depends on CloveLib
-    compileOnly project(':clovelib')
+    compileOnly project(':clovelibapi')
 
     // JSON parsing for update checker
     implementation 'com.googlecode.json-simple:json-simple:1.1.1'
@@ -18,7 +18,7 @@ dependencies {
 
 // Fix: Explicitly declare the dependency on clovelib:shadowJar
 tasks.named('compileJava') {
-    dependsOn ':clovelib:shadowJar'
+    dependsOn ':clovelibapi:shadowJar'
 }
 
 shadowJar {

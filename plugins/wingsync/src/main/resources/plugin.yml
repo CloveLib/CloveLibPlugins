@@ -4,11 +4,11 @@
 
 name: WingSync
 version: '3.2.0'
-main: uk.co.clovetwilight3.wingsync.Main
+main: win.clovelib.wingsync.Main
 api-version: '1.21.10'
 depend: [CloveLib]
-author: CloveTwilight3
-website: https://github.com/CloveLib/WingSync
+author: CloveLib Studios
+website: https://www.clovelib.win/docs/wingsync
 
 commands:
   wsreload:

@@ -4,13 +4,13 @@ def versionFile = file('VERSION')
 if (versionFile.exists()) {
     version = versionFile.text.trim()
 } else {
-    version = '3.2.0'  // fallback
+    version = '5.0.0'  // fallback
 }
 description = "Discord bot integration for whitelist management"
 
 dependencies {
     // Depends on CloveLib
-    compileOnly project(':clovelib')
+    compileOnly project(':clovelibapi')
 
     // JDA for Discord bot (will pull in all transitive dependencies)
     implementation 'net.dv8tion:JDA:5.0.0-beta.24'
@@ -21,24 +21,24 @@ dependencies {
 
 // Fix: Explicitly declare the dependency on clovelib:shadowJar
 tasks.named('compileJava') {
-    dependsOn ':clovelib:shadowJar'
+    dependsOn ':clovelibapi:shadowJar'
 }
 
 shadowJar {
     archiveBaseName.set('WingSync')
 
     // Relocate JDA and its dependencies to avoid conflicts
-    relocate 'net.dv8tion', 'uk.co.clovetwilight3.libs.jda'
-    relocate 'com.neovisionaries', 'uk.co.clovetwilight3.libs.neovisionaries'
-    relocate 'okhttp3', 'uk.co.clovetwilight3.libs.okhttp3'
-    relocate 'okio', 'uk.co.clovetwilight3.libs.okio'
-    relocate 'gnu.trove', 'uk.co.clovetwilight3.libs.trove'
-    relocate 'com.fasterxml.jackson', 'uk.co.clovetwilight3.libs.jackson'
-    relocate 'org.apache.commons', 'uk.co.clovetwilight3.libs.commons'
-    relocate 'kotlin', 'uk.co.clovetwilight3.libs.kotlin'
-    relocate 'org.jetbrains', 'uk.co.clovetwilight3.libs.jetbrains'
-    relocate 'org.intellij', 'uk.co.clovetwilight3.libs.intellij'
-    relocate 'org.slf4j', 'uk.co.clovetwilight3.libs.slf4j'
+    relocate 'net.dv8tion', 'win.clovelib.libs.jda'
+    relocate 'com.neovisionaries', 'win.clovelib.libs.neovisionaries'
+    relocate 'okhttp3', 'win.clovelib.libs.okhttp3'
+    relocate 'okio', 'win.clovelib.libs.okio'
+    relocate 'gnu.trove', 'win.clovelib.libs.trove'
+    relocate 'com.fasterxml.jackson', 'win.clovelib.libs.jackson'
+    relocate 'org.apache.commons', 'win.clovelib.libs.commons'
+    relocate 'kotlin', 'win.clovelib.libs.kotlin'
+    relocate 'org.jetbrains', 'win.clovelib.libs.jetbrains'
+    relocate 'org.intellij', 'win.clovelib.libs.intellij'
+    relocate 'org.slf4j', 'win.clovelib.libs.slf4j'
 
     // Merge service files (important for OkHttp/Okio)
     mergeServiceFiles()

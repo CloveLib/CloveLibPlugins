@@ -1,5 +1,10 @@
 // Clove's PluralCraft - Plural system support plugin
-version = '2.0.0'
+def versionFile = file('VERSION')
+if (versionFile.exists()) {
+    version = versionFile.text.trim()
+} else {
+    version = '5.0.0'  // fallback
+}
 description = "Plugin for plural systems to proxy their messages"
 
 dependencies {

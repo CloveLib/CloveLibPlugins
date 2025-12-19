@@ -8,7 +8,7 @@ plugin-info:
   version: 5.0.0 # Your plugin version - Use to report issues
   authors:
     - "CloveTwilight3"
-  official-repo: "https://github.com/CloveLib/Estrocord"
+  official-repo: "https://github.com/CloveLib/CloveLibPlugins"
 
 # ========================
 # Global Flight Settings

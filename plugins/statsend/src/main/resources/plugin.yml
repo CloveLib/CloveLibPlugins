@@ -1,13 +1,13 @@
 # Copyright (c) 2025 Clove Twilight
 # Licensed under the MIT License
 
-name: end-stats-paper
+name: StatsEnd
 version: ${project.version}
-main: uk.co.clovetwilight3.statsend.StatsMain
+main: win.clovelib.statsend.StatsMain
 api-version: 1.21
-author: CloveTwilight3
+author: CloveLib Studios
 description: ${project.description}
-website: https://github.com/CloveLib/CloveLibPlugins
+website: https://www.clovelib.win/docs/statsend
 
 commands:
   estart:

@@ -3,7 +3,8 @@
 
 name: JailedWings
 version: 1.7
-main: uk.co.clovetwilight3.jailedwings.JailMain
+main: win.clovelib.jailedwings.JailMain
+author: CloveLib Studios
 api-version: '1.21'
 description: A simple jail plugin for Minecraft.
 depend: [CloveLib]

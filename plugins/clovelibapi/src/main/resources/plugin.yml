@@ -1,0 +1,10 @@
+# Copyright (c) 2025 Clove Twilight
+# Licensed under the MIT License
+
+name: CloveLib API
+main: win.clovelib.api.LibMain
+version: 3.0.0
+api-version: '1.21.10'
+description: Shared library for Clove's Plugins - provides ban system, jail system, and cross-plugin events.
+author: CloveLib Studios
+website: https://www.clovelib.win/docs/api
