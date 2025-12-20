@@ -13,10 +13,10 @@ dependencies {
     compileOnly project(':clovelibapi')
 
     // JDA for Discord bot (will pull in all transitive dependencies)
-    implementation 'net.dv8tion:JDA:5.0.0-beta.24'
+    implementation 'net.dv8tion:JDA:6.2.0'
 
     // Gson for JSON storage
-    implementation 'com.google.code.gson:gson:2.10.1'
+    implementation 'com.google.code.gson:gson:2.13.2'
 }
 
 // Fix: Explicitly declare the dependency on clovelib:shadowJar
