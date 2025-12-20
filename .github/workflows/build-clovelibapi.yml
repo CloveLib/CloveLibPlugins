@@ -1,4 +1,4 @@
-name: Test Curseforge
+name: Deploy CloveLibAPI
 
 on:
   workflow_dispatch:
@@ -31,12 +31,12 @@ jobs:
       - name: Build
         env:
           RELEASE_CHANNEL: 'release'
-        run: ./gradlew :estrocord:shadowJar
+        run: ./gradlew :clovelibapi:shadowJar
 
       - name: Deploy
-        uses: clovetwilight3/fancyverteiler@main
+        uses: fancyinnovations/fancyverteiler@main
         with:
-          config_path: "/plugins/estrocord/test_config.json"
+          config_path: "/plugins/clovelibapi/release_deployment_config.json"
+          modrinth_api_key: ${{ secrets.MODRINTH_API_KEY }}
           curseforge_api_key: ${{ secrets.CURSEFORGE_API_KEY }}
- #         modrinth_api_key: ${{ secrets.MODRINTH_API_KEY }}
           discord_webhook_url: ${{ secrets.DISCORD_WEBHOOK_URL }}

@@ -1,4 +1,4 @@
-name: Deploy CloveLib
+name: Deploy ClovesPluralCraft
 
 on:
   workflow_dispatch:
@@ -31,11 +31,12 @@ jobs:
       - name: Build
         env:
           RELEASE_CHANNEL: 'release'
-        run: ./gradlew :clovelib:shadowJar
+        run: ./gradlew :cpc:shadowJar
 
       - name: Deploy
         uses: fancyinnovations/fancyverteiler@main
         with:
-          config_path: "/plugins/clovelib/release_deployment_config.json"
+          config_path: "/plugins/cpc/release_deployment_config.json"
           modrinth_api_key: ${{ secrets.MODRINTH_API_KEY }}
+          curseforge_api_key: ${{ secrets.CURSEFORGE_API_KEY }}
           discord_webhook_url: ${{ secrets.DISCORD_WEBHOOK_URL }}

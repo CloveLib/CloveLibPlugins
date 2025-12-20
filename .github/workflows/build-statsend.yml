@@ -1,4 +1,4 @@
-name: Deploy Estrocord
+name: Deploy StatsEnd
 
 on:
   workflow_dispatch:
@@ -31,12 +31,12 @@ jobs:
       - name: Build
         env:
           RELEASE_CHANNEL: 'release'
-        run: ./gradlew :estrocord:shadowJar
+        run: ./gradlew :statsend:shadowJar
 
       - name: Deploy
         uses: fancyinnovations/fancyverteiler@main
         with:
-          config_path: "/plugins/estrocord/release_deployment_config.json"
+          config_path: "/plugins/statsend/release_deployment_config.json"
           modrinth_api_key: ${{ secrets.MODRINTH_API_KEY }}
           curseforge_api_key: ${{ secrets.CURSEFORGE_API_KEY }}
           discord_webhook_url: ${{ secrets.DISCORD_WEBHOOK_URL }}
