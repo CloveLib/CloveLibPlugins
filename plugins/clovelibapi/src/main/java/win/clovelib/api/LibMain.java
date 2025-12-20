@@ -11,7 +11,7 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import win.clovelib.api.events.PlayerBannedEvent;
-import win.clovelib.api.clovelib.events.PlayerUnbannedEvent;
+import win.clovelib.api.events.PlayerUnbannedEvent;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;

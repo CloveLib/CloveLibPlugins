@@ -10,8 +10,8 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import win.clovelib.clovelib.LibMain;
-import win.clovelib.clovelib.BanData;
+import win.clovelib.api.LibMain;
+import win.clovelib.api.BanData;
 import win.clovelib.estrocord.EstroMain;
 
 import java.text.SimpleDateFormat;

@@ -5,7 +5,7 @@
 
 package win.clovelib.estrocord;
 
-import win.clovelib.clovelib.LibMain;
+import win.clovelib.api.LibMain;
 import win.clovelib.estrocord.commands.*;
 import win.clovelib.estrocord.flight.*;
 import win.clovelib.estrocord.listeners.*;
@@ -27,7 +27,6 @@ import win.clovelib.estrocord.listeners.blockVeinminerListener;
 import win.clovelib.estrocord.size.GrowthShrinkPotionCommand;
 import win.clovelib.estrocord.size.PotionRecipeManager;
 import win.clovelib.estrocord.spawneggs.RecipeManager;
-import win.clovelib.estrocord.spawneggs.SpawnBookCommand;
 
 public class EstroMain extends JavaPlugin {
 
@@ -122,7 +121,7 @@ public class EstroMain extends JavaPlugin {
         getCommand("estrocord").setExecutor(new EstrocordCommandExecutor(this));
         getCommand("version").setExecutor(new VersionCommandExecutor(this));
         getCommand("estrocordreload").setExecutor(new ReloadCommandExecutor(this));
-        getCommand("spawnbook").setExecutor(new SpawnBookCommand());
+        getCommand("recipes").setExecutor(new RecipesCommandExecutor(this));
         getCommand("growthpotion").setExecutor(new GrowthShrinkPotionCommand(this));
         getCommand("shrinkpotion").setExecutor(new GrowthShrinkPotionCommand(this));
 

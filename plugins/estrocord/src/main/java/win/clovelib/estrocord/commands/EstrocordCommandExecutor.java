@@ -29,10 +29,10 @@ public class EstrocordCommandExecutor implements CommandExecutor {
 
         String commonMessage =
                 ChatColor.AQUA + "Es" +
-                ChatColor.LIGHT_PURPLE + "tro" +
-                ChatColor.WHITE + "cor" +
-                ChatColor.LIGHT_PURPLE + "dPl" +
-                ChatColor.AQUA + "ugin";
+                        ChatColor.LIGHT_PURPLE + "tro" +
+                        ChatColor.WHITE + "cor" +
+                        ChatColor.LIGHT_PURPLE + "dPl" +
+                        ChatColor.AQUA + "ugin";
 
         // Page 1
         helpPages.add(ChatColor.GOLD + "======== " + commonMessage + ChatColor.GREEN + " Help (Page 1/2)" + ChatColor.GOLD + " ========\n"
@@ -56,7 +56,7 @@ public class EstrocordCommandExecutor implements CommandExecutor {
                 + ChatColor.YELLOW + "/tpdeny" + ChatColor.WHITE + " - Deny a teleport request.\n"
                 + ChatColor.YELLOW + "/estrocordreload" + ChatColor.WHITE + " - Reload the plugin configuration.\n"
                 + ChatColor.YELLOW + "/version" + ChatColor.WHITE + " - Shows the current version of the plugin.\n"
-                + ChatColor.YELLOW + "/spawnbook" + ChatColor.WHITE + " - Spawns in the spawn egg book.\n"
+                + ChatColor.YELLOW + "/recipes" + ChatColor.WHITE + " - Get the URL to view all spawn egg recipes.\n"
         );
     }
 

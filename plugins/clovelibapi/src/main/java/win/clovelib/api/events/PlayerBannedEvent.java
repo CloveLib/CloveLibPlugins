@@ -3,7 +3,7 @@
  * Licensed under the MIT License
  */
 
-package win.clovelib.clovelib.events;
+package win.clovelib.api.events;
 
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;

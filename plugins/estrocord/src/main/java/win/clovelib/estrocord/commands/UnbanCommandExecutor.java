@@ -13,8 +13,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
-import win.clovelib.clovelib.LibMain;
-import win.clovelib.clovelib.BanData;
+import win.clovelib.api.LibMain;
+import win.clovelib.api.BanData;
 import win.clovelib.estrocord.EstroMain;
 
 import java.util.ArrayList;

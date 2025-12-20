@@ -3,7 +3,7 @@
  * Licensed under the MIT License
  */
 
-package win.clovelib.clovelib;
+package win.clovelib.api;
 
 import org.bukkit.Location;
 

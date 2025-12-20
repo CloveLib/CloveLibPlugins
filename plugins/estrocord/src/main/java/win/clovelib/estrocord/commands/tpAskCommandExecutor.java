@@ -14,7 +14,7 @@ import org.bukkit.entity.Player;
 
 import java.util.HashMap;
 import java.util.UUID;
-import win.clovelib.clovelib.LibMain;
+import win.clovelib.api.LibMain;
 
 public class tpAskCommandExecutor implements CommandExecutor {
 

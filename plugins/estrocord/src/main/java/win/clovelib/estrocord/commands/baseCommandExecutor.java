@@ -13,7 +13,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import win.clovelib.estrocord.EstroMain;
-import win.clovelib.clovelib.LibMain;
+import win.clovelib.api.LibMain;
 
 import java.util.UUID;
 

@@ -10,7 +10,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import win.clovelib.clovelib.events.PlayerBannedEvent;
+import win.clovelib.api.events.PlayerBannedEvent;
 import win.clovelib.wingsync.Main;
 
 public class CloveLibListener implements Listener {

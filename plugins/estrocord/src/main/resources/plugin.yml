@@ -30,9 +30,11 @@ commands:
     permission-message: §cYou do not have permission to view the ban list!
 
   # Existing commands
-  spawnbook:
-    description: Gives a book showing all mob crafts.
-    usage: /spawnbook
+  recipes:
+    description: Get the URL to view all spawn egg recipes
+    usage: /recipes
+    permission: estrocord.recipes
+    permission-message: §cYou don't have permission to use this command!
   version:
     description: Display the plugin version and credits.
   setspawn:
@@ -164,3 +166,6 @@ permissions:
   estrocord.shrinkpotion:
     description: Gives a shrink potion
     default: op
+  estrocord.recipes:
+    description: Allows players to view spawn egg recipes URL
+    default: true

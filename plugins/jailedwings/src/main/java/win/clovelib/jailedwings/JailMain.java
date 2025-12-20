@@ -19,8 +19,8 @@ import java.util.UUID;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import win.clovelib.clovelib.LibMain;
-import win.clovelib.clovelib.JailData;
+import win.clovelib.api.LibMain;
+import win.clovelib.api.JailData;
 
 public class JailMain extends JavaPlugin implements Listener {
     private Location jailLocation;
