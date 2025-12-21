@@ -1,6 +1,6 @@
 # CloveLibPlugins
 
-Minecraft server plugins built on the CloveLib API framework.
+Minecraft server mods for Fabric built on the CloveLib API framework.
 
 [![Deploy CloveLibAPI](https://github.com/CloveLib/CloveLibPlugins/actions/workflows/build-clovelibapi.yml/badge.svg)](https://github.com/CloveLib/CloveLibPlugins/actions/workflows/build-clovelibapi.yml)
 [![Deploy CPC](https://github.com/CloveLib/CloveLibPlugins/actions/workflows/build-cpc.yml/badge.svg)](https://github.com/CloveLib/CloveLibPlugins/actions/workflows/build-cpc.yml)
@@ -9,7 +9,7 @@ Minecraft server plugins built on the CloveLib API framework.
 [![Deploy JailedWings](https://github.com/CloveLib/CloveLibPlugins/actions/workflows/build-jailedwings.yml/badge.svg)](https://github.com/CloveLib/CloveLibPlugins/actions/workflows/build-jailedwings.yml)
 [![Deploy StatsEnd](https://github.com/CloveLib/CloveLibPlugins/actions/workflows/build-statsend.yml/badge.svg)](https://github.com/CloveLib/CloveLibPlugins/actions/workflows/build-statsend.yml)
 [![Deploy WingSync](https://github.com/CloveLib/CloveLibPlugins/actions/workflows/build-wingsync.yml/badge.svg)](https://github.com/CloveLib/CloveLibPlugins/actions/workflows/build-wingsync.yml)
-[![CodeFactor](https://www.codefactor.io/repository/github/clovelib/clovelibplugins/badge)](https://www.codefactor.io/repository/github/clovelib/clovelibplugins)
+[![CodeFactor](https://www.codefactor.io/repository/github/clovelib/CloveLibPlugins/badge)](https://www.codefactor.io/repository/github/clovelib/CloveLibPlugins)
 
 ## Plugins
 
@@ -33,7 +33,7 @@ Minecraft server plugins built on the CloveLib API framework.
 ./gradlew :pluginname:shadowJar
 ```
 
-**Installation:** Download from [Modrinth](https://modrinth.com/organization/clovelib) → Install CloveLibAPI first → Add other plugins → Configure
+**Installation:** Download from [CloveLib Studios](https://www.clovelib.win)
 
 ## Contributors
 
@@ -43,4 +43,4 @@ Minecraft server plugins built on the CloveLib API framework.
 
 ## License
 
-MIT © 2025 Clove Twilight | [Website](https://www.clovelib.win) | [Docs](https://www.clovelib.win/docs)
+MIT © 2025 Clove Twilight | [Website](https://www.clovelib.win)
